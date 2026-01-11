@@ -1,0 +1,20 @@
+BASE62 = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+
+
+def base62_encode(num):
+    """
+    Convert a number to base62 representation.
+    
+    Args:
+        num: Non-negative integer to encode
+        
+    Returns:
+        Base62 encoded string
+    """
+    if num == 0:
+        return "0"
+    result = []
+    while num > 0:
+        num, rem = divmod(num, 62)
+        result.append(BASE62[rem])
+    return ''.join(reversed(result))
